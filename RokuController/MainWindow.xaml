@@ -1,0 +1,127 @@
+﻿<Window x:Class="Roku_Controller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Roku_Controller"
+        mc:Ignorable="d"
+        Title="Roku Controller" Height="375" Width="475">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ComboBox Name="cmbRokus" Margin="5 0 5 5" DisplayMemberPath="DisplayName" SelectionChanged="cmbRokus_SelectionChanged" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnBack" Margin="5" Content="&#x1f81c;" FontSize="18" Click="btnBack_Click" />
+                    <Button Grid.Column="1" Name="btnHome" Margin="5" Content="&#x1f3e0;" Click="btnHome_Click" />
+                    <Button Grid.Column="2" Name="btnPower" Margin="5" Click="btnPower_Click">
+                        <Image Width="16" Height="16">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                                            <GeometryDrawing Geometry="F1 M24,24z M0,0z M18.36,6.64A9,9,0,1,1,5.63,6.64">
+                                                <GeometryDrawing.Pen>
+                                                    <Pen Brush="#FF000000" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                                </GeometryDrawing.Pen>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Pen>
+                                                    <Pen Brush="#FF000000" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                                </GeometryDrawing.Pen>
+                                                <GeometryDrawing.Geometry>
+                                                    <LineGeometry StartPoint="12,2" EndPoint="12,12" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Name="btnUp" Margin="5" Content="&#x2bc5;" FontSize="18" Click="btnUp_Click" />
+                    <Button Grid.Column="2" Name="btnVolUp" Margin="5" Content="&#x1f50a;" Click="btnVolUp_Click" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnLeft" Margin="5" Content="&#x2bc7;" FontSize="18" Click="btnLeft_Click" />
+                    <Button Grid.Column="1" Name="btnSelect" Margin="5" Content="OK" Click="btnSelect_Click" />
+                    <Button Grid.Column="2" Name="btnRight" Margin="5" Content="&#x2bc8;" FontSize="18" Click="btnRight_Click" />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnVolMute" Margin="5" Content="&#x1f508;" Click="btnVolMute_Click" />
+                    <Button Grid.Column="1" Name="btnDown" Margin="5" Content="&#x2bc6;" FontSize="18" Click="btnDown_Click" />
+                    <Button Grid.Column="2" Name="btnVolDown" Margin="5" Content="&#x1f509;" Click="btnVolDown_Click" />
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnReplay" Margin="5" Content="&#x27f3;" FontSize="20" Click="btnReplay_Click" />
+                    <Button Grid.Column="1" Name="btnSettings" Margin="5" Content="&#x1f7b9;" FontSize="18" Click="btnSettings_Click" />
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnRev" Margin="5" Content="&#x2bec;" FontSize="18" Click="btnRev_Click"/>
+                    <Button Grid.Column="1" Name="btnPlay" Margin="5" Content="&#x2bc8;" FontSize="18" Click="btnPlay_Click" />
+                    <Button Grid.Column="2" Name="btnFwd" Margin="5" Content="&#x2bee;"  FontSize="18" Click="btnFwd_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <DataGrid x:Name="lstApps"  AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Double Click App To Launch" Binding="{Binding Name}" Width="*" />
+                </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="lstApps_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

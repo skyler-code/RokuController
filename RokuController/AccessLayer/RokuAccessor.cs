@@ -12,6 +12,7 @@ namespace RokuAccess
         public static List<Roku> GetRokuList()
         {
             var deviceLocator = new SsdpDeviceLocator();
+            var ipRegex = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
             var foundDevices = deviceLocator.SearchAsync("roku:ecp").Result;
             var rokus = new List<Roku>();
             foreach (var device in foundDevices)
@@ -19,8 +20,7 @@ namespace RokuAccess
                 var deviceUrl = device.DescriptionLocation.ToString();
                 var detailsUrl = deviceUrl + "query/device-info";
                 var appsUrl = deviceUrl + "query/apps";
-                var ip = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
-                var result = ip.Matches(deviceUrl);
+                var result = ipRegex.Matches(deviceUrl);
                 var ipAddress = IPAddress.Parse(result[0].ToString());
                 var details = HTTPTools.Get(detailsUrl);
                 var appDetails = HTTPTools.Get(appsUrl);
@@ -35,7 +35,6 @@ namespace RokuAccess
 
         public static void SendRokuButton(Roku roku, KeyCode keyCode)
         {
-            Console.WriteLine(roku.IPAddress);
             var sendKeyUrl = roku.Url + "keypress/" + keyCode;
             _ = HTTPTools.PostAsync(sendKeyUrl);
         }

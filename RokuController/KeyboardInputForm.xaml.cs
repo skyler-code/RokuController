@@ -43,19 +43,23 @@ namespace Roku_Controller
                 _rokuManager.PressButton(KeyCode.Enter);
             }
         }
+        private void txtEntry_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Back)
+            {
+                _rokuManager.PressButton(KeyCode.Backspace);
+            }
+        }
 
         private void txtEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
             var txt = textBox.Text;
-            if (txt.Length < currentText.Length)
-            {
-                _rokuManager.PressButton(KeyCode.Backspace);
-            }else if (txt.Length - currentText.Length > 1)
+            if (txt.Length - currentText.Length > 1)
             {
                 _ = _rokuManager.SendMultipleKeyPress(txt);
             }
-            else
+            else if (txt.Length > currentText.Length)
             {
                 _rokuManager.SendKeyPress(txt.Last());
             }

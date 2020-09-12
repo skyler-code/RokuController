@@ -12,7 +12,7 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox Name="txtEntry" Grid.Column="0" Margin="15" TextChanged="txtEntry_TextChanged" KeyDown="txtEntry_KeyDown" />
+        <TextBox Name="txtEntry" Grid.Column="0" Margin="15" TextChanged="txtEntry_TextChanged" KeyDown="txtEntry_KeyDown" KeyUp="txtEntry_KeyUp" />
         <Button Name="btnClear" Grid.Column="1" Margin="15" Content="Clear" Click="btnClear_Click" />
     </Grid>
 </Window>

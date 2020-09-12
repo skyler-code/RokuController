@@ -53,6 +53,5 @@ namespace RokuAccess
             var sendKeyUrl = roku.Url + "keypress/Lit_" + encodedKey;
             return HTTPTools.PostAsync(sendKeyUrl);
         }
-
     }
 }

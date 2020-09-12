@@ -53,5 +53,27 @@ namespace ControllerLogic
             }
             RokuAccessor.LaunchRokuApp(SelectedRoku, app);
         }
+        public void SendKeyPress(char key)
+        {
+            if (SelectedRoku == null)
+            {
+                MessageBox.Show("No Roku Selected!");
+                return;
+            }
+            RokuAccessor.SendRokuManualKeyEntry(SelectedRoku, key);
+        }
+
+        public async Task SendMultipleKeyPress(string input)
+        {
+            if (SelectedRoku == null)
+            {
+                MessageBox.Show("No Roku Selected!");
+                return;
+            }
+            foreach (var key in input)
+            {
+                await RokuAccessor.SendRokuManualKeyEntryAsync(SelectedRoku, key);
+            }
+        }
     }
 }

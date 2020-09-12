@@ -1,0 +1,18 @@
+﻿<Window x:Class="Roku_Controller.KeyboardInputForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Roku_Controller"
+        mc:Ignorable="d"
+        Name="frmKeyboardInput"
+        Title="Manual Input" Height="100" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="txtEntry" Grid.Column="0" Margin="15" TextChanged="txtEntry_TextChanged" KeyDown="txtEntry_KeyDown" />
+        <Button Name="btnClear" Grid.Column="1" Margin="15" Content="Clear" Click="btnClear_Click" />
+    </Grid>
+</Window>

@@ -27,7 +27,6 @@ namespace Roku_Controller
             lstApps.ItemsSource = rokuManager.SelectedRoku.Apps;
         }
 
-
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             rokuManager.PressButton(KeyCode.Play);
@@ -117,9 +116,19 @@ namespace Roku_Controller
 
         private void lstApps_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var row = sender as DataGridRow;
-            var selectedApp = row.Item as RokuApp;
+            var row = (DataGridRow)sender;
+            var selectedApp = (RokuApp)row.Item;
             rokuManager.LaunchApp(selectedApp);
+        }
+
+        private void btnKeyboard_Click(object sender, RoutedEventArgs e)
+        {
+            var locationForm = new KeyboardInputForm(rokuManager)
+            {
+                Top = Top,
+                Left = Left
+            };
+            locationForm.ShowDialog();
         }
     }
 }

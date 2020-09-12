@@ -184,6 +184,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -206,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="KeyboardInputForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -221,6 +226,9 @@
     <Compile Include="DataObjects\KeyCode.cs" />
     <Compile Include="DataObjects\Roku.cs" />
     <Compile Include="DataObjects\RokuDeviceInfo.cs" />
+    <Compile Include="KeyboardInputForm.xaml.cs">
+      <DependentUpon>KeyboardInputForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogicLayer\RokuManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

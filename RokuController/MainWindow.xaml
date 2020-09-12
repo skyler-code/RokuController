@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Roku_Controller"
         mc:Ignorable="d"
+        Name="RokuForm"
         Title="Roku Controller" Height="375" Width="475">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -68,6 +69,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    <Button Name="btnKeyboard" Margin="5" Content="&#x2328;" FontSize="20" Click="btnKeyboard_Click" />
                     <Button Grid.Column="1" Name="btnUp" Margin="5" Content="&#x2bc5;" FontSize="18" Click="btnUp_Click" />
                     <Button Grid.Column="2" Name="btnVolUp" Margin="5" Content="&#x1f50a;" Click="btnVolUp_Click" />
                 </Grid>

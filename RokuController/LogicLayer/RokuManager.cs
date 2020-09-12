@@ -60,7 +60,7 @@ namespace ControllerLogic
                 MessageBox.Show("No Roku Selected!");
                 return;
             }
-            RokuAccessor.SendRokuManualKeyEntry(SelectedRoku, key);
+            _ = RokuAccessor.SendRokuManualKeyEntryAsync(SelectedRoku, key);
         }
 
         public async Task SendMultipleKeyPress(string input)

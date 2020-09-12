@@ -47,18 +47,11 @@ namespace RokuAccess
             _ = HTTPTools.PostAsync(launchUrl);
         }
 
-        public static void SendRokuManualKeyEntry(Roku roku, char key)
+        public static Task SendRokuManualKeyEntryAsync(Roku roku, char key)
         {
             var encodedKey = HttpUtility.UrlEncode(key.ToString());
             var sendKeyUrl = roku.Url + "keypress/Lit_" + encodedKey;
-            _ = HTTPTools.PostAsync(sendKeyUrl);
-        }
-
-        public static async Task SendRokuManualKeyEntryAsync(Roku roku, char key)
-        {
-            var encodedKey = HttpUtility.UrlEncode(key.ToString());
-            var sendKeyUrl = roku.Url + "keypress/Lit_" + encodedKey;
-            await HTTPTools.PostAsync(sendKeyUrl);
+            return HTTPTools.PostAsync(sendKeyUrl);
         }
 
     }
